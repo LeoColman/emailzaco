@@ -32,6 +32,7 @@ dependencies {
 	// Testing
 	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.2")
 	testImplementation("io.kotlintest:kotlintest-extensions-spring:3.3.2")
+	testImplementation("io.kotlintest:kotlintest-assertions-json:3.3.2")
 }
 
 tasks.withType<Test> {

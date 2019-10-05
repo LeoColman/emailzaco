@@ -1,4 +1,4 @@
-package br.org.institutoops.emalizaco
+package br.org.institutoops.emailzaco
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
