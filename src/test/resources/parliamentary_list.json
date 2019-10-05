@@ -1,0 +1,12 @@
+[
+  {
+    "name": "José da Silva",
+    "mail": "jose_da_silva@example.com",
+    "mailBodyPlaceholder": "Olá, José! Este é um placeholder"
+  },
+  {
+    "name": "Banana Banonoso",
+    "mail": "banana_banonoso@example.com",
+    "mailBodyPlaceholder": "Olá, banana bananoso! Este é outro placeholder"
+  }
+]

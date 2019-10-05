@@ -11,4 +11,4 @@ pluginManagement {
 		}
 	}
 }
-rootProject.name = "emalizaco"
+rootProject.name = "emailzaco"
