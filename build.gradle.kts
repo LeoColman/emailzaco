@@ -30,9 +30,10 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	
 	// Testing
-	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.2")
-	testImplementation("io.kotlintest:kotlintest-extensions-spring:3.3.2")
-	testImplementation("io.kotlintest:kotlintest-assertions-json:3.3.2")
+	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
+	testImplementation("io.kotlintest:kotlintest-extensions-spring:3.4.2")
+	testImplementation("io.kotlintest:kotlintest-assertions-json:3.4.2")
+	testImplementation("com.ninja-squad:springmockk:1.1.3")
 }
 
 tasks.withType<Test> {
