@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
+import javax.validation.constraints.Email
+import javax.validation.constraints.NotEmpty
 
 @RestController
 @RequestMapping("/email")
@@ -16,7 +19,7 @@ class EmailSendController(
     
     @PostMapping
     fun sendEmail(
-        @RequestBody emailSendRequest: EmailSendRequest
+        @Valid @RequestBody emailSendRequest: EmailSendRequest
     ): ResponseEntity<String> {
         sendAllEmails(emailSendRequest)
         return ResponseEntity.accepted().build()
@@ -40,8 +43,14 @@ data class EmailSendRequest(
 )
 
 data class User(
-    @JsonProperty("name") val name: String,
-    @JsonProperty("email") val email: String
+    
+    @NotEmpty
+    @JsonProperty("name")
+    val name: String,
+    
+    @Email
+    @JsonProperty("email")
+    val email: String
 )
 
 data class ParliamentarianMailRequest(
