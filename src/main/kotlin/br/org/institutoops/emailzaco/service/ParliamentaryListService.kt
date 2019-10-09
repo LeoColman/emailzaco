@@ -28,7 +28,7 @@ class ParliamentaryListService(
 
 data class Parliamentary(
     val name: String,
-    val mail: String,
+    val emails: List<String>,
     val mailBodyPlaceholder: String
 )
 
