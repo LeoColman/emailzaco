@@ -13,23 +13,28 @@
 <div class="container">
     <h3>Enviar e-mails</h3>
     <form class="form-group col-md-7" id="form">
-        <label for="name">Nome</label>
-        <input type="text" name="name" id="name" placeholder="Nome"
-               class="form-control" style="margin-bottom: 10px"
-               oninvalid="this.setCustomValidity('Por favor, preencha seu nome')"
-               oninput="this.setCustomValidity('')" required>
+        <div id="info">
+            <label for="name">Nome</label>
+            <input type="text" name="name" id="name" placeholder="Nome"
+                   class="form-control" style="margin-bottom: 10px"
+                   oninvalid="this.setCustomValidity('Por favor, preencha seu nome')"
+                   oninput="this.setCustomValidity('')" required>
 
-        <label for="email">E-mail</label>
-        <input type="email" name="email" id="email" placeholder="E-mail"
-               class="form-control" style="margin-bottom: 20px"
-               oninvalid="this.setCustomValidity('Por favor, preencha seu e-mail')"
-               oninput="this.setCustomValidity('')" required>
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="E-mail"
+                   class="form-control" style="margin-bottom: 20px"
+                   oninvalid="this.setCustomValidity('Por favor, preencha seu e-mail')"
+                   oninput="this.setCustomValidity('')" required>
+            <button id="nextPage">Próximo</button>
+        </div>
 
-        <h4>Deputados</h4>
+        <div style="display: none;" id="parliamentarians">
+            <h4>Deputados</h4>
 
-        <div style="display: block;" id="parliamentarians"></div>
+            <div id="list-parliamentarians"></div>
 
-        <button type="submit">Enviar e-mails</button>
+            <button type="submit">Enviar e-mails</button>
+        </div>
     </form>
 </div>
 <script th:inline="javascript">
