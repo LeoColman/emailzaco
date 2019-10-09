@@ -28,6 +28,11 @@ dependencies {
 	
 	// Jackson
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+	// Front
+	implementation("org.webjars:jquery:3.3.1")
+	implementation("org.webjars:bootstrap:3.3.7")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	
 	// Testing
 	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")

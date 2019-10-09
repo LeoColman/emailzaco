@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>E-mailzaço</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h3>Enviar e-mails</h3>
+    <form class="form-group col-md-7" id="form">
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" placeholder="Nome" class="form-control" style="margin-bottom: 10px">
+
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" placeholder="E-mail" class="form-control" style="margin-bottom: 20px">
+
+        <h4>Deputados</h4>
+
+        <div style="display: block;" id="parliamentarians"></div>
+
+        <button type="submit">Enviar e-mails</button>
+    </form>
+</div>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const EMAIL_API_URL = /*[[${EMAIL_API_URL} == null ? '' : ${EMAIL_API_URL}]]*/;
+    /*]]>*/
+</script>
+<script th:src="@{/main.js}"></script>
+</body>
+</html>
