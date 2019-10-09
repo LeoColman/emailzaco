@@ -14,10 +14,16 @@
     <h3>Enviar e-mails</h3>
     <form class="form-group col-md-7" id="form">
         <label for="name">Nome</label>
-        <input type="text" name="name" id="name" placeholder="Nome" class="form-control" style="margin-bottom: 10px">
+        <input type="text" name="name" id="name" placeholder="Nome"
+               class="form-control" style="margin-bottom: 10px"
+               oninvalid="this.setCustomValidity('Por favor, preencha seu nome')"
+               oninput="this.setCustomValidity('')" required>
 
         <label for="email">E-mail</label>
-        <input type="email" name="email" id="email" placeholder="E-mail" class="form-control" style="margin-bottom: 20px">
+        <input type="email" name="email" id="email" placeholder="E-mail"
+               class="form-control" style="margin-bottom: 20px"
+               oninvalid="this.setCustomValidity('Por favor, preencha seu e-mail')"
+               oninput="this.setCustomValidity('')" required>
 
         <h4>Deputados</h4>
 
