@@ -19,8 +19,8 @@ class ParliamentaryListServiceTest : FunSpec() {
     }
     
     private val expectedParliamentaryListFromFile = listOf(
-        Parliamentary("José da Silva", "jose_da_silva@example.com", "Olá, José! Este é um placeholder"),
-        Parliamentary("Banana Banonoso", "banana_banonoso@example.com", "Olá, banana bananoso! Este é outro placeholder")
+        Parliamentary("José da Silva", listOf("jose_da_silva@example.com"), "Olá, José! Este é um placeholder"),
+        Parliamentary("Banana Banonoso", listOf("banana_banonoso@example.com", "banana_bone@example.com"), "Olá, banana bananoso! Este é outro placeholder")
     )
     
     

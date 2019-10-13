@@ -13,7 +13,7 @@ import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.core.io.Resource
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class ParliamentaryListControllerTest : FunSpec() {
+class ParliamentaryControllerTest : FunSpec() {
 
     @LocalServerPort var port: Int = 0
     
@@ -24,7 +24,7 @@ class ParliamentaryListControllerTest : FunSpec() {
         test("Returns the parliamentary list") {
             val parliamentariansJson = getParliamentariansJson()
             
-            restTemplate.getForObject<String>("http://localhost:$port/")!!.shouldMatchJson(parliamentariansJson)
+            restTemplate.getForObject<String>("http://localhost:$port/parliamentary/list")!!.shouldMatchJson(parliamentariansJson)
         }
     }
     
