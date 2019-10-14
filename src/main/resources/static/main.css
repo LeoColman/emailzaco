@@ -39,18 +39,18 @@
 }
 
 .entry-header {
+    width: 100%;
     padding: 72px 0;
     text-align: center;
     transition: all .3s ease-in-out;
 }
 
 .entry-title {
+    width: 100%;
     font-style: normal;
     font-weight: 400;
     margin: 0 auto;
-    max-width: 92%;
     word-wrap: break-word;
-    width: 1040px;
     transition: all .3s ease-in-out;
     font-family: "Open Sans",sans-serif;
     font-size: 6rem;
