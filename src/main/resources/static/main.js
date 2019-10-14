@@ -1,5 +1,13 @@
-initParliamentarians()
 $('#form').on('submit', submitForm)
+$('#nextPage').on('click', goToNextPage)
+
+function goToNextPage() {
+    if ($('#form')[0].checkValidity()) {
+        $('#info').hide()
+        initParliamentarians()
+        $('#parliamentarians').show()
+    }
+}
 
 function initParliamentarians() {
     $.getJSON(`${EMAIL_API_URL}/parliamentary/list`, function (data) {
@@ -8,7 +16,8 @@ function initParliamentarians() {
 }
 
 function createMailField(index, parliamentary) {
-    $('#parliamentarians').append(`
+    const mailBodyPlaceholder = getFilledPlaceholder(parliamentary.mailBodyPlaceholder)
+    $('#list-parliamentarians').append(`
         <input type="checkbox" class="form-check-input" 
             id="${parliamentary.name}" data-toggle="collapse" 
             data-target="#parliamentary${index}" data-text="#message${index}"
@@ -17,9 +26,15 @@ function createMailField(index, parliamentary) {
         
         <div id="parliamentary${index}" class="collapse">
             <label for="message${index}">Mensagem:</label>
-            <textarea class="form-control" rows="5" id="message${index}">${parliamentary.mailBodyPlaceholder}</textarea>
+            <textarea class="form-control" rows="5" id="message${index}">${mailBodyPlaceholder}</textarea>
         </div>
     `)
+}
+
+function getFilledPlaceholder(message) {
+    return message
+        .replace(/%NOME_USUARIO%/g, $('#name').val())
+        .replace(/%EMAIL_USUARIO%/g, $('#email').val())
 }
 
 function submitForm(event) {
