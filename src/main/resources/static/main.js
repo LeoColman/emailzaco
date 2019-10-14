@@ -18,15 +18,17 @@ function initParliamentarians() {
 function createMailField(index, parliamentary) {
     const mailBodyPlaceholder = getFilledPlaceholder(parliamentary.mailBodyPlaceholder)
     $('#list-parliamentarians').append(`
-        <input type="checkbox" class="form-check-input" 
-            id="${parliamentary.name}" data-toggle="collapse" 
-            data-target="#parliamentary${index}" data-text="#message${index}"
-            data-name="${parliamentary.name}">
-        <label class="form-check-label" for="${parliamentary.name}">${parliamentary.name}</label>
-        
-        <div id="parliamentary${index}" class="collapse">
-            <label for="message${index}">Mensagem:</label>
-            <textarea class="form-control" rows="5" id="message${index}">${mailBodyPlaceholder}</textarea>
+        <div style="display: block">
+            <input type="checkbox" class="form-check-input" 
+                id="${parliamentary.name}" data-toggle="collapse" 
+                data-target="#parliamentary${index}" data-text="#message${index}"
+                data-name="${parliamentary.name}">
+            <label class="form-check-label" for="${parliamentary.name}">${parliamentary.name}</label>
+            
+            <div id="parliamentary${index}" class="collapse">
+                <label for="message${index}">Mensagem:</label>
+                <textarea class="form-control" rows="5" id="message${index}">${mailBodyPlaceholder}</textarea>
+            </div>
         </div>
     `)
 }
