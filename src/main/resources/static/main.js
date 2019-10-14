@@ -1,5 +1,7 @@
+$('[data-toggle="tooltip"]').tooltip();
 $('#form').on('submit', submitForm)
 $('#nextPage').on('click', goToNextPage)
+$('#toggleSelected').on('click', toggleSelected)
 
 function goToNextPage() {
     if ($('#form')[0].checkValidity()) {
@@ -12,20 +14,34 @@ function goToNextPage() {
 function initParliamentarians() {
     $.getJSON(`${EMAIL_API_URL}/parliamentary/list`, function (data) {
         $(data).each(createMailField)
+        $('.collapse').on('hide.bs.collapse', function () {
+            return !isChecked($(this).data('input'))
+        }).on('show.bs.collapse', function () {
+            return isChecked($(this).data('input'))
+        });
     })
+}
+
+function isChecked(id) {
+    return $(id)[0].checked
 }
 
 function createMailField(index, parliamentary) {
     const mailBodyPlaceholder = getFilledPlaceholder(parliamentary.mailBodyPlaceholder)
     $('#list-parliamentarians').append(`
         <div style="display: block">
-            <input type="checkbox" class="form-check-input" 
-                id="${parliamentary.name}" data-toggle="collapse" 
+            <input type="checkbox" class="form-check-input parliamentary-check" 
+                id="check${index}" data-toggle="collapse" 
                 data-target="#parliamentary${index}" data-text="#message${index}"
                 data-name="${parliamentary.name}">
-            <label class="form-check-label" for="${parliamentary.name}">${parliamentary.name}</label>
+            <label class="form-check-label" style="font-weight: 100 !important;"
+             for="${parliamentary.name}">${parliamentary.name}</label>
+             <div style="display: inline" data-toggle="tooltip" data-placement="right" title="Clique para editar">
+                 <i class="fa fa-pencil-square-o" data-toggle="collapse" 
+                    data-target="#parliamentary${index}"></i>
+             </div>
             
-            <div id="parliamentary${index}" class="collapse">
+            <div id="parliamentary${index}" class="collapse" data-input="#check${index}">
                 <label for="message${index}">Mensagem:</label>
                 <textarea class="form-control" rows="5" id="message${index}">${mailBodyPlaceholder}</textarea>
             </div>
@@ -64,7 +80,8 @@ function getFormData() {
 
 function getChosenParliamentarians() {
     const chosenParliamentarians = []
-    $('input:checkbox:checked').each(function () {
+    $('.parliamentary-check').each(function () {
+        if (!$(this)[0].checked) return
         const mailTextArea = $($(this).data('text'))
 
         chosenParliamentarians.push({
@@ -74,4 +91,12 @@ function getChosenParliamentarians() {
     })
 
     return chosenParliamentarians
+}
+
+let checked = true
+function toggleSelected() {
+    $('.parliamentary-check').each(function() {
+        $(this)[0].checked = checked;
+    });
+    checked = !checked
 }
