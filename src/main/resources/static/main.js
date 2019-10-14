@@ -2,7 +2,8 @@ $('#form').on('submit', submitForm)
 $('#nextPage').on('click', goToNextPage)
 $('#toggleSelected').on('click', toggleSelected)
 
-function goToNextPage() {
+function goToNextPage(event) {
+    event.preventDefault()
     if ($('#form')[0].checkValidity()) {
         $('#info').hide()
         initParliamentarians()
@@ -61,6 +62,13 @@ function submitForm(event) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
     })
+    setTimeout(function () {
+        $('#toggleSelected')[0].checked = false
+        $('#parliamentarians').hide()
+        $('#list-parliamentarians').empty()
+        $('#info').show()
+        alert('E-mails enviados!')
+    }, 300)
 }
 
 function getFormData() {
