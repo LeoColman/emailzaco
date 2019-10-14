@@ -1,4 +1,3 @@
-$('[data-toggle="tooltip"]').tooltip();
 $('#form').on('submit', submitForm)
 $('#nextPage').on('click', goToNextPage)
 $('#toggleSelected').on('click', toggleSelected)
@@ -36,10 +35,6 @@ function createMailField(index, parliamentary) {
                 data-name="${parliamentary.name}">
             <label class="form-check-label" style="font-weight: 100 !important;"
              for="${parliamentary.name}">${parliamentary.name}</label>
-             <div style="display: inline" data-toggle="tooltip" data-placement="right" title="Clique para editar">
-                 <i class="fa fa-pencil-square-o" data-toggle="collapse" 
-                    data-target="#parliamentary${index}"></i>
-             </div>
             
             <div id="parliamentary${index}" class="collapse" data-input="#check${index}">
                 <label for="message${index}">Mensagem:</label>
@@ -96,7 +91,10 @@ function getChosenParliamentarians() {
 let checked = true
 function toggleSelected() {
     $('.parliamentary-check').each(function() {
-        $(this)[0].checked = checked;
+        if ((checked && !$(this)[0].checked)
+        || (!checked && $(this)[0].checked)) {
+            $(this).trigger('click')
+        }
     });
     checked = !checked
 }
