@@ -33,6 +33,7 @@ dependencies {
 	implementation("org.webjars:jquery:3.3.1")
 	implementation("org.webjars:bootstrap:3.3.7")
 	implementation("org.webjars:font-awesome:4.7.0")
+	implementation("org.webjars.bower:jquery-mask-plugin:1.13.4")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	
 	// Testing
