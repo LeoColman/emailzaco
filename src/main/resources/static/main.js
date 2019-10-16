@@ -50,6 +50,10 @@ function getFilledPlaceholder(message) {
     return message
         .replace(/%NOME_USUARIO%/g, $('#name').val())
         .replace(/%EMAIL_USUARIO%/g, $('#email').val())
+        .replace(/%END_USUARIO%/g, $('#address').val())
+        .replace(/%CIDADE_USUARIO%/g, $('#city').val())
+        .replace(/%UF_USUARIO%/g, $('#uf').val())
+        .replace(/%CPF_USUARIO%/g, $('#cpf').val())
 }
 
 function submitForm(event) {

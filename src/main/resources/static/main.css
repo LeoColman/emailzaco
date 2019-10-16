@@ -101,6 +101,19 @@
     line-height: 2;
 }
 
+::placeholder {
+    color: #b3b0b0;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: #b3b0b0;
+}
+
+::-ms-input-placeholder {
+    color: #b3b0b0;
+}
+
 body {
     background-color: #fdf9f1;
 }

@@ -43,28 +43,49 @@
         <header class="entry-header"><h1 class="entry-title">E-mailzaço</h1></header>
         <form id="form">
             <div id="info">
+                <p>N&oacutes precisamos de alguns dados seus para gerar a mensagem do e-mail. No entanto, o Instituto OPS n&atildeo ir&aacute armazenar nenhuma dessas informaç&otildees.</p>
                 <div class="input-div">
-                    <label class="contact-label" for="name">Nome</label>
+
+                    <label class="contact-label" for="name">Nome *</label>
                     <input type="text" name="name" id="name"
                            class="input-text" style="margin-bottom: 10px"
                            oninvalid="this.setCustomValidity('Por favor, preencha seu nome')"
                     oninput="this.setCustomValidity('')" required>
 
-                    <label class="contact-label" for="cpf">CPF</label>
+                    <label class="contact-label" for="cpf">CPF *</label>
                     <input type="text" name="cpf" id="cpf"
                            class="input-text" style="margin-bottom: 10px"
                            oninvalid="this.setCustomValidity('Por favor, preencha seu CPF')"
                            oninput="this.setCustomValidity('')" required>
-                </div>
 
-                <div class="input-div">
-                    <label class="contact-label" for="email">E-mail</label>
+                    <label class="contact-label" for="email">E-mail *</label>
                     <input type="email" name="email" id="email"
                            class="input-text" style="margin-bottom: 20px"
                            oninvalid="this.setCustomValidity('Por favor, preencha seu e-mail')"
                            oninput="this.setCustomValidity('')" required>
+
+                    <label class="contact-label" for="address">Endereço *</label>
+                    <input type="text" name="address" id="address"
+                           class="input-text" style="margin-bottom: 20px"
+                           placeholder="Av. Afonso Pena, 3297 - Centro, 79002-072"
+                           oninvalid="this.setCustomValidity('Por favor, preencha seu endereço')"
+                           oninput="this.setCustomValidity('')" required>
+
+                    <label class="contact-label" for="city">Cidade *</label>
+                    <input type="text" name="city" id="city"
+                           class="input-text" style="margin-bottom: 20px"
+                           placeholder="Campo Grande"
+                           oninvalid="this.setCustomValidity('Por favor, preencha sua cidade')"
+                           oninput="this.setCustomValidity('')" required>
+
+                    <label class="contact-label" for="uf">UF *</label>
+                    <input type="text" name="uf" id="uf"
+                           class="input-text" style="margin-bottom: 20px"
+                           placeholder="MS" maxlength="2"
+                           oninvalid="this.setCustomValidity('Por favor, preencha sua UF')"
+                           oninput="this.setCustomValidity('')" required>
                 </div>
-                <button id="nextPage" class="button">Próximo</button>
+                <button id="nextPage" class="button" style="margin-bottom: 10px;">Próximo</button>
             </div>
 
             <div style="display: none" id="parliamentarians">
