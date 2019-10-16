@@ -47,7 +47,6 @@
   {
     "name": "Felipe Orro",
     "emails": [
-      "deputado@felipeorro.com.br",
       "gabinete@felipeorro.com.br"
 
     ],
@@ -109,7 +108,7 @@
   {
     "name": "Londres Machado",
     "emails": [
-      "deputadolondresmachado@gmail.com"
+      "deputadolondres@gmail.com"
     ],
     "mailBodyPlaceholder": "Deputado Londres Machado.\n\nEu, %NOME_USUARIO%, residente à %END_USUARIO%, na cidade de %CIDADE_USUARIO%-%UF_USUARIO%, portador do CPF Nº %CPF_USUARIO%, venho à presença de V. Exa., com fulcro na Constituição Federal, e Leis 12.527/11 e 13.460/17, requerer informações acerca do uso de sua verba indenizatória para o ano de 2019.\n\nSolicito, portanto, cópia de todos os documentos fiscais, ou não, que foram objeto de ressarcimento de despesas de mandato, entre os meses de janeiro (se houver) a setembro do corrente ano, juntamente com o borderô emitido pela ALMS e o comprovante de pagamento (crédito em conta) de cada um dos meses.\n\nConsiderando que todas essas informações pleiteadas são de fácil e rápida obtenção, uma vez que o §6º, Art 4º do Ato da Mesa 1/2015 determina que todos os documentos devam ser digitalizados, e, demonstrando a eficiência no trato da organização gerencial desse gabinete, roga-se plena e tempestiva resposta, atentando-se para o Art. 32, incisos I e II da Lei de Acesso à Informação-LAI. \n\nSolicito que por gentileza encaminhe resposta para os e-mails abaixo:\nluciobig@institutoops.org.br\n%EMAIL_USUARIO%\n\nAtenciosamente,\n%NOME_USUARIO%"
   },
