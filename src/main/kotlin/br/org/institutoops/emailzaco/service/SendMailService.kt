@@ -57,7 +57,7 @@ class SendMailService(
         return LinkedMultiValueMap(mapOf(
             "from" to listOf("$userName <no-reply@institutoops.org.br>"),
             "to" to listOf(parliamentaryEmail),
-            "bcc" to listOf("emalizaco@institutoops.org.br"),
+            "bcc" to listOf("emailzaco@institutoops.org.br"),
             "text" to listOf(mailBody),
             "subject" to listOf("Solicitação com base na Lei de Acesso à Informação"),
             "h:Reply-To" to listOf(userEmail)
