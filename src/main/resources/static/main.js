@@ -1,4 +1,4 @@
-$('#cpf').mask('000.000.000-00')
+//$('#cpf').mask('000.000.000-00')
 $('#form').on('submit', submitForm)
 $('#nextPage').on('click', goToNextPage)
 $('#toggleSelected').on('click', toggleSelected)
