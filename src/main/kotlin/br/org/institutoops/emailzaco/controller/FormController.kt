@@ -9,9 +9,9 @@ class FormController {
 
     private val emailApiUrl by lazy { System.getenv("EMAIL_API_URL") }
 
-    @GetMapping("/form")
+    @GetMapping("/")
     fun form(model: Model): String {
         model.addAttribute("EMAIL_API_URL", emailApiUrl)
-        return "index"
+        return "disabled"
     }
 }
