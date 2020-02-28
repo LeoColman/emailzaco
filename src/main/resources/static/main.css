@@ -85,6 +85,10 @@
     line-height: 1.8;
 }
 
+.info {
+    font-size: 2rem;
+}
+
 .input-div {
     margin-bottom: 18px;
     display: block;
@@ -115,5 +119,5 @@
 }
 
 body {
-    background-color: #fdf9f1;
+    background-color: #ffffff;
 }
