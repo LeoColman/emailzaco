@@ -12,6 +12,6 @@ class FormController {
     @GetMapping("/")
     fun form(model: Model): String {
         model.addAttribute("EMAIL_API_URL", emailApiUrl)
-        return "disabled"
+        return "index"
     }
 }
