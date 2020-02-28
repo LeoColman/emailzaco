@@ -70,7 +70,6 @@ val parliamentaryEmails = listOf(
     "imprensa.eduardobotelho@gmail.com",
     "deputadoelizeunascimento@gmail.com",
     "deputadofaissal@al.mt.gov.br",
-    "contato@janainarivamt.com.br",
     "deputadojoaobatista@al.mt.gov.br",
     "deputadoludiocabral@al.mt.gov.br",
     "deputadomaxrussi@gmail.com",
