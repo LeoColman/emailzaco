@@ -27,19 +27,19 @@ class EmailSendController(
     }
     
     private fun sendAllEmails(emailSendRequest: EmailSendRequest) {
-//        parliamentaryEmails.forEach { 
-//            sendMailService.sendMail(
-//                emailSendRequest.user.name,
-//                emailSendRequest.user.email,
-//                it,
-//                messageParliamentary.replace("%USUARIO%", emailSendRequest.user.name)
-//            )
-//        }
+        parliamentaryEmails.forEach { 
+            sendMailService.sendMail(
+                emailSendRequest.user.name,
+                emailSendRequest.user.email,
+                it,
+                messageParliamentary.replace("%USUARIO%", emailSendRequest.user.name)
+            )
+        }
 
         sendMailService.sendMail(
             emailSendRequest.user.name,
             emailSendRequest.user.email,
-            "leonardo.colman98@gmail.com",
+            ombudsmanEmail,
             messageOmbudsman.replace("%USUARIO%", emailSendRequest.user.name)
         )
     }
