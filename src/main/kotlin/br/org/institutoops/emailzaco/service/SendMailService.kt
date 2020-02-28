@@ -6,62 +6,61 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Service
-import org.springframework.util.Base64Utils
-import org.springframework.util.LinkedMultiValueMap
 
 @Service
 class SendMailService(
-    private val restTemplateBuilder: RestTemplateBuilder,
-    private val parliamentaryListService: ParliamentaryListService
+    restTemplateBuilder: RestTemplateBuilder
 ) {
-    private val mailgunApi by lazy { System.getenv("MAILGUN_API_KEY") }
-    private val mailgunKey = "api:$mailgunApi"
+    private val pepiPostKey by lazy { System.getenv("PEPIPOST_API_KEY") }
     
     private val restTemplate = restTemplateBuilder.build()
 
     fun sendMail(
         userName: String,
         userEmail: String,
-        parliamentaryName: String,
+        targetEmail: String,
         mailBody: String
     ) {
         val headers = createAuthHeaders()
-        getParliamentaryEmails(parliamentaryName).forEach {
-            val value = createValue(userName, userEmail, it, mailBody)
-            
-            restTemplate.exchange(
-                "https://api.mailgun.net/v3/mg.institutoops.org.br/messages",
-                HttpMethod.POST,
-                HttpEntity(value, headers),
-                String::class.java
-            )
-        }
+        val value = createValue(userName, userEmail, targetEmail, mailBody)
+
+        restTemplate.exchange(
+            "https://api.pepipost.com/v2/sendEmail",
+            HttpMethod.POST,
+            HttpEntity(value, headers),
+            String::class.java
+        )
     }
     
     private fun createAuthHeaders() = HttpHeaders().apply {
-        val userBase64 = Base64Utils.encodeToUrlSafeString(mailgunKey.toByteArray())
-        add("Authorization", "Basic $userBase64")
-        contentType = MediaType.APPLICATION_FORM_URLENCODED
+        add("api_key", pepiPostKey)
+        contentType = MediaType.APPLICATION_JSON
     }
     
-    private fun getParliamentaryEmails(parliamentaryName: String): List<String> {
-        return parliamentaryListService.getParliamentarians().first { it.name == parliamentaryName }.emails
-    }
     
     private fun createValue(
         userName: String,
         userEmail: String,
-        parliamentaryEmail: String,
+        targetEmail: String,
         mailBody: String
-    ): LinkedMultiValueMap<String, String> {
-        return LinkedMultiValueMap(mapOf(
-            "from" to listOf("$userName <no-reply@institutoops.org.br>"),
-            "to" to listOf(parliamentaryEmail),
-            "bcc" to listOf("emailzaco@institutoops.org.br"),
-            "text" to listOf(mailBody),
-            "subject" to listOf("Solicitação com base na Lei de Acesso à Informação"),
-            "h:Reply-To" to listOf(userEmail)
-        ))
+    ): Map<Any, Any> {
+        return mapOf(
+            "personalizations" to listOf(
+                mapOf("recipient" to targetEmail)
+            ),
+            "from" to mapOf(
+                "fromEmail" to "no-reply-$randomStr@institutoops.org.br",
+                "fromName" to userName
+            ),
+            "replyToId" to userEmail,
+            "subject" to "Projeto de Lei 15/20",
+            "content" to mailBody,
+            "settings" to mapOf(
+                "unsubscribe" to 0
+            )
+        )
     }
+    
+    private val randomStr: String get() = (1..5).map { (('a'..'z') + ('0'..'9')).random() }.joinToString(separator = "")
 
 }
