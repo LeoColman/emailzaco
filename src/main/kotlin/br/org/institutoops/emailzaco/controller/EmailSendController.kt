@@ -1,6 +1,8 @@
 package br.org.institutoops.emailzaco.controller
 
 import br.org.institutoops.emailzaco.service.SendMailService
+import br.org.institutoops.emailzaco.service.UserMail
+import br.org.institutoops.emailzaco.service.UserMailRepository
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -15,7 +17,8 @@ import javax.validation.constraints.NotEmpty
 @RestController
 @RequestMapping("/email")
 class EmailSendController(
-    private val sendMailService: SendMailService
+    private val sendMailService: SendMailService,
+    private val userMailRepository: UserMailRepository
 ) {
     
     @PostMapping
@@ -27,6 +30,7 @@ class EmailSendController(
     }
     
     private fun sendAllEmails(emailSendRequest: EmailSendRequest) {
+        userMailRepository.save(UserMail(emailSendRequest.user.name, emailSendRequest.user.email))
         parliamentaryEmails.forEach { 
             sendMailService.sendMail(
                 emailSendRequest.user.name,
